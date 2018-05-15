@@ -48,14 +48,10 @@ class Player {
   }
 
   safeToAttack(warrior) {
-    if (warrior.health() === this.maxHealth || warrior.health() > this.archerDangerHealthThreshold) {
-      warrior.walk();
-    } else if (warrior.health() === this.prevHealth && warrior.health() < this.maxHealth) {
-      warrior.rest();
-    } else if (warrior.health() < this.archerDangerHealthThreshold) {
-      warrior.walk('backward');
-    } else {
+    if (!warrior.feel().isEmpty()) {
       warrior.attack();
+    } else {
+      
     }
   }
 
